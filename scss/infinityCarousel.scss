@@ -1,0 +1,102 @@
+$slideHeight:	250px;
+$slideWidth:	180px;
+$navHeight: 	45px;
+$navWidth: 		40px;
+$slideSpeed: 	0.4s;
+
+// Demonstration for debugging
+.infinity-carousel {
+	font-family: 	Helvetica, Arial, serif;
+	text-transform: uppercase;
+	letter-spacing: 0.025em;
+	.nav {
+		color: 			white;
+		font-weight: 	bold;
+		font-size: 		2em;
+		background-color: #0074D9;
+		&.prev:before {
+			content: '<';
+		}
+		&.next:before {
+			content: '>';
+		}
+	}
+	.slides > * {
+		outline: 1px solid #ddd;
+	}
+	.img-wrap {
+		background-color: 	#aaa;
+		border-radius: 		50%;
+	}
+	.slides > *:nth-child(odd) .img-wrap {
+		background-color: #ddd;
+	}
+}
+
+// Real Stuff
+.infinity-carousel {
+	position: 	relative;
+	overflow: 	hidden;
+	.no-transition { 
+		transition: none!important;
+	}
+	.nav {
+		position: 	absolute;
+		display: 	block;
+		width: 		$navWidth;
+		height: 	$navHeight;
+		top: 		($slideHeight - $navHeight) / 2;
+		z-index: 	50;
+		opacity: 	0.5;
+		border: 	0;
+		cursor: 	pointer;
+    	-webkit-apperance: none;
+		&:hover {
+			opacity: 1;
+		}
+		&.next {
+			right: 	0;
+		}
+	}
+	.center {
+		position: 	relative;
+		width: 		$slideWidth;
+		height: 	$slideHeight;
+		margin: 	0 auto;
+	}
+	.text {
+		position: 	relative;
+		width: 		$slideWidth;
+		height: 	75px;
+		margin: 	0 auto;
+		text-align: center;
+		opacity: 	0.1;
+		transition: opacity $slideSpeed linear;
+	}
+	.active .text {
+		opacity: 1;
+	}
+	.slides {
+		position: 	absolute;
+		width: 		100000px;
+		height: 	100%;
+		transition: all $slideSpeed;
+	}
+	.slides > * {
+		position: 	relative;
+		float: 		left;
+		width: 		$slideWidth;
+		height: 	100%;
+		text-align: center;
+		overflow: 	hidden;
+	}
+	.img-wrap {
+		width: 		144px;
+		height: 	144px;
+		margin: 	0 auto;
+		overflow: 	hidden;
+	}
+	img {
+		height:100%;
+	}
+}

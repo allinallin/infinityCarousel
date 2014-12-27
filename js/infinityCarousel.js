@@ -1,5 +1,6 @@
-var infinityCarousel = function ( $scope ) {
-    var $carousel   = $('.slides', $scope),
+var infinityCarousel = function() {
+    var $scope      = $(this),
+        $carousel   = $('.slides', $scope),
         initidx     = 0,
         activeidx   = 0,
         setlength   = 0;
@@ -22,13 +23,13 @@ var infinityCarousel = function ( $scope ) {
 
         applyCarouselPos( initLeftPos, true );
 
-        $scope.on('click', '.nav', function (e) {
+        $scope.on('click', '.nav', function(e) {
             e.preventDefault();
             var direction = $(this).hasClass('prev') ? 'left' : 'right';
             moveCarousel( direction );
         });
 
-        $(window).resize(function () {
+        $(window).resize(function() {
             var currentLeftPos = $carousel.children().eq( activeidx ).position().left * -1;
             applyCarouselPos( currentLeftPos );
         });
@@ -84,6 +85,6 @@ var infinityCarousel = function ( $scope ) {
 
 $(function(){
     $('.infinity-carousel').each(function() {
-        infinityCarousel( $(this) );
+        infinityCarousel.apply( this );
     });
 });

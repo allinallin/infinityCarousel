@@ -18,7 +18,7 @@ Instantiate the carousel with the following:
 ```javascript
 $(function(){
     $('.infinity-carousel').each(function() {
-        infinityCarousel( $(this) );
+        infinityCarousel.apply( this );
     });
 });
 ```
